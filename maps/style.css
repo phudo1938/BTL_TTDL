@@ -185,3 +185,32 @@
     width: 100vw;
     height: 100vh;
 }
+
+.btn-s-d{
+	display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 30px;
+}
+
+.btn-s-d button{
+    font-size: 19px;
+    padding: 7px 15px;
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 20px;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+.btn-s-d span{
+    padding: 5px;
+    font-size: medium;
+}
+.btn-s-d button:hover{
+    cursor: pointer;
+}
