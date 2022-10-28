@@ -5,52 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
     <link rel="stylesheet" href="./maps/style.css">
     <link rel="stylesheet" href="./maps/script.js">
     <title>Map</title>
 </head>
 <body>
     <div class="nav_bar">
-        <div class="left_top">
-            <div class="search_left_top">
-                <input type="text" placeholder="Tìm kiếm trên map">
+        <div class="main_navbar">
+            <div class="left_top">
+                <div class="search_left_top">
+                    <input type="text" placeholder="Tìm kiếm trên map">
+                </div>
+                <div class="icon_search_left_top">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="l_left_top"></div>
+                <div class="icon_go_left_top">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
             </div>
-            <div class="icon_search_left_top">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            <div class="l_left_top"></div>
-            <div class="icon_go_left_top">
-                <i class="fa-solid fa-xmark"></i>
+            <div class="right_top">
+                <div class="service">
+                    <div class="fe_rt restaurant">
+                        <div class="pd_rt">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Thêm</span>
+                        </div>
+                    </div>
+                    <div class="fe_rt hotel">
+                        <div class="pd_rt">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Sửa</span>
+                        </div>
+                    </div>
+                    <div class="fe_rt visted">
+                        <div class="pd_rt">
+                            <i class="fa-solid fa-trash"></i>
+                            <span>Xóa</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="right_top">
-            <div class="service">
-                <div class="fe_rt restaurant">
-                    <div class="pd_rt">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>Thêm</span>
-                    </div>
-                </div>
-                <div class="fe_rt hotel">
-                    <div class="pd_rt">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <span>Sửa</span>
-                    </div>
-                </div>
-                <div class="fe_rt visted">
-                    <div class="pd_rt">
-                        <i class="fa-solid fa-trash"></i>
-                        <span>Xóa</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="login">
-            <i class="fa-solid fa-gear"></i>
-            <img src="./maps/img/user.png" alt="">
-            <div class="logout">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </div>
+    </div>
+    <div class="login">
+        <i class="fa-solid fa-gear"></i>
+        <img src="./maps/img/user.png" alt="">
+        <div class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
         </div>
     </div>
     <div class="info_location">
@@ -90,5 +94,34 @@
             </div>
         </div>
     </div>
+    <div id="map"></div>
+    <script>
+        var format = 'image/png';
+        var map;
+        var minX = 8.49874900000009;
+        var minY = 1.65254800000014;
+        var maxX = 16.1921150000001;
+        var maxY = 13.0780600000001;
+        var cenX = (minX + maxX) / 2;
+        var cenY = (minY + maxY) / 2;
+        var mapLat = cenY;
+        var mapLng = cenX;
+        var mapDefaultZoom = 6;
+        initialize_map();
+        function initialize_map() {
+            layerBG = new ol.layer.Tile({
+                source: new ol.source.OSM({})
+            });
+            var viewMap = new ol.View({
+                center: ol.proj.fromLonLat([mapLng, mapLat]),
+                zoom: mapDefaultZoom
+            });
+            map = new ol.Map({
+                target: "map",
+                layers: [layerBG],
+                view: viewMap
+            });
+        };
+    </script>
 </body>
 </html>
