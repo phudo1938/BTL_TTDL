@@ -198,7 +198,7 @@
 .btn-s-d button{
     font-size: 19px;
     padding: 7px 15px;
-    background-color: rgb(255, 91, 0);
+    background-color: rgb(241, 178, 149);
     border: none;
     color: white;
     text-align: center;
@@ -214,6 +214,7 @@
 }
 .btn-s-d button:hover{
     cursor: pointer;
+    background-color: rgb(255, 91, 0);
 }
 
 /* pop up */
