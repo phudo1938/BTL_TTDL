@@ -261,6 +261,8 @@
 }
 .form_pop_up table tbody tr:first-child td{
     font-size: 24px;
+    background: rgb(255, 91, 0);
+    color: #fff;
 }
 
 .form_pop_up table tbody tr:first-child:hover{
