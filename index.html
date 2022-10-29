@@ -46,15 +46,16 @@
                             <span>Xóa</span>
                         </div>
                     </div>
+
+                    <div class="fe_rt show" id="show">
+                        <div class="pd_rt">
+                            <i class="fa-solid fa-trash"></i>
+                            <span>Show</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="login">
-        <i class="fa-solid fa-gear"></i>
-        <img src="./maps/img/user.png" alt="">
-        <div class="logout">
-            <i class="fa-solid fa-right-from-bracket"></i>
         </div>
     </div>
     <div class="info_location">
@@ -78,14 +79,6 @@
                 <i class="fa-solid fa-clock"></i>
                 <input type="text" value="" placeholder="Thời gian mở cửa"></input>
             </div>
-            <div class="info_pd web">
-                <i class="fa-solid fa-earth-americas"></i>
-                <input type="text" value="" placeholder="Địa chỉ trang Web"></input>
-            </div>
-            <div class="info_pd phone">
-                <i class="fa-solid fa-phone"></i>
-                <input type="text" value="" placeholder="09454795476"></input>
-            </div>
             <div class="info_pd price">
                 <i class="fa-solid fa-coins"></i>
                 <input type="text" value="" placeholder="10.000đ "></input>
@@ -102,6 +95,67 @@
             </div>
         </div>
     </div>
+
+    <div class="pop_up">
+        <div class="form_pop_up">
+            <ul>
+                <li>
+                    Thành phố Hồ Chí Minh
+                </li>
+                <li>
+                    Tỉnh An Giang
+                </li> 
+                <li>
+                    Tỉnh Bà Rịa - Vũng Tàu
+                </li> 
+                <li>
+                    Tỉnh Bạc Liêu
+                </li> 
+                <li>
+                    Tỉnh Bắc Giang
+                </li> 
+                <li>
+                    Tỉnh Bắc Kạn
+                </li> 
+                <li>
+                    Tỉnh Bắc Kạn
+                </li> 
+                <li>
+                    Tỉnh Bắc Ninh
+                </li> 
+                <li>
+                    Thành phố Hà Nội
+                </li>
+                <li>
+                    Thành phố Hồ Chí Minh
+                </li>
+                <li>
+                    Tỉnh An Giang
+                </li> 
+                <li>
+                    Tỉnh Bà Rịa - Vũng Tàu
+                </li> 
+                <li>
+                    Tỉnh Bạc Liêu
+                </li> 
+                <li>
+                    Tỉnh Bắc Giang
+                </li> 
+                <li>
+                    Tỉnh Bắc Kạn
+                </li> 
+                <li>
+                    Tỉnh Bắc Ninh
+                </li> 
+            </ul>
+
+            <input type="submit" value="Ok" id="submit">
+            <div class="md_close"></div>
+        </div>
+        
+    </div>
+    <div class="md_overlay"></div>
+
     <div id="map"></div>
     <script>
         var format = 'image/png';
@@ -131,5 +185,7 @@
             });
         };
     </script>
+    <script defer type="text/javascript" src="./maps/libs/jquery-3.6.0.min.js"></script>
+    <script defer type="text/javascript" src="./maps/js/main.js"></script>
 </body>
 </html>
