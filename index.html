@@ -31,41 +31,30 @@
 <body>
   <div class="nav_bar">
     <div class="main_navbar">
-      <div class="left_top row m-2 align-items-center">
-        <div class="search_left_top col-8 p-1">
-          <input type="text" placeholder="Tìm kiếm trên map">
-        </div>
-        <div class="icon_search_left_top col-2">
-          <button id="search_btn"><span class="material-symbols-outlined">search</span></button>
-        </div>
-        <div class="exit-btn col-2">
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-      </div>
       <div class="right_top">
         <div class="service">
           <div class="fe_rt selected" id="deafault" data-api="getSingle">
             <div class="pd_rt">
-              <i class="fa-solid fa-arrow-pointer"></i>
-              <span>Xem</span>
+              <i class="fa-solid fa-eye"></i>
+              <span>Watch</span>
             </div>
           </div>
           <div class="fe_rt" data-api="add">
             <div class="pd_rt">
               <i class="fa-solid fa-plus"></i>
-              <span>Thêm</span>
+              <span>Add</span>
             </div>
           </div>
           <div class="fe_rt" data-api="edit">
             <div class="pd_rt">
               <i class="fa-solid fa-pen-to-square"></i>
-              <span>Sửa</span>
+              <span>Edit</span>
             </div>
           </div>
           <div class="fe_rt" data-api="delete">
             <div class="pd_rt">
               <i class="fa-solid fa-trash"></i>
-              <span>Xóa</span>
+              <span>Delete</span>
             </div>
           </div>
           <div class="fe_rt show" id="show">
@@ -87,7 +76,7 @@
   </div> -->
   <div class="aside">
     <div class="name_location">
-      <h1 class="col-12"><input readonly class="col-12" id="name" type="text" value="" placeholder="Tên quán"></input></h1>
+      <h1 class="col-12"><input readonly class="col-12" id="name" type="text" value="" placeholder="Tên nhà cung cấp"></input></h1>
       <p class="loaihinh">
         <span>Nhà cung cấp xăng dầu</span>
       </p>
@@ -99,7 +88,7 @@
       <div class="abc">
         <div class="info_pd">
           <i class="fa-solid fa-location-dot"></i>
-          <input readonly id="addr" type="text" value="" placeholder="Địa chỉ"></input>
+          <input readonly id="addr" type="text" value="" placeholder="Location"></input>
         </div>
       </div>
       <!-- <div class="info_pd">
@@ -138,7 +127,7 @@
     <div class="form_pop_up">
         <table>
           <thead>
-            <tr>
+            <tr class="form_pop_up_tr">
               <td><strong>Tên cây xăng</strong></td>
               <td>Vị trí</td>
           </tr>
@@ -158,14 +147,14 @@
     <div id="success" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <i class="fa-solid fa-circle-check"></i>
-        <strong class="me-auto">Thành công</strong>
+        <strong class="me-auto">Success</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
     <div id="eror" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <i class="fa-solid fa-circle-exclamation"></i>
-        <strong class="me-auto">Lỗi</strong>
+        <strong class="me-auto">Eror!</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>

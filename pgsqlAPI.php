@@ -23,7 +23,7 @@ if (isset($_POST['function'])) {
     else if($function == 'edit')
         $aResult = edit($paPDO, $_POST['item']);
     else if($function == 'delete')
-        $aResult = delete($paPDO, $paPoint,$distance);
+        $aResult = delete($paPDO, $_POST['item']);
     else if($function == 'isInHN')
         $aResult = isInHN($paPDO, $paPoint);
     else if($function == 'getByID')
@@ -35,7 +35,7 @@ if (isset($_POST['function'])) {
 function initDB()
 {
     // Kết nối CSDL
-    $paPDO = new PDO('pgsql:host=localhost;dbname=BTL;port=5432', 'postgres', '2001');
+    $paPDO = new PDO('pgsql:host=localhost;dbname=TestCSDL;port=5432', 'postgres', 'Phu19032001');
     return $paPDO;
 }
 function query($paPDO, $paSQLStr)
@@ -99,8 +99,8 @@ function listAll($pdo,$point,$keyword){
     return 'null';
 }
 function add($pdo, $item){
-    $mySQLStr = "INSERT INTO pointfl(\"name\",addr,device_num,min_price,max_price,opening_hour,phone_num,url,geom) 
-                 VALUES ('".$item['name']."', '".$item['addr']."', '".$item['device_num']."', '".$item['min_price']."', '".$item['max_price']."', '".$item['opening_hour']."', '".$item['phone_num']."', '".$item['url']."', '".$item['geom']."');";
+    $mySQLStr = "INSERT INTO pointfl(\"name\",addr_stree,geom) 
+                 VALUES ('".$item['name']."', '".$item['addr_stree']."','".$item['geom']."');";
     $result = query($pdo, $mySQLStr);
     if ($result) {
         return true;
@@ -109,8 +109,8 @@ function add($pdo, $item){
 }
 
 function edit($pdo, $item){
-    $mySQLStr = "UPDATE pointfl SET name = '".$item['name']."', addr = '".$item['addr']."', device_num = '".$item['device_num']."', min_price = '".$item['min_price']."', max_price = '".$item['max_price']."', phone_num = '".$item['phone_num']."', url = '".$item['url']."', opening_hour = '".$item['opening_hour']."'
-                 WHERE id = ".$item['id'].";";
+    $mySQLStr = "UPDATE pointfl SET name = '".$item['name']."', addr_stree = '".$item['addr_stree']."'
+                 WHERE gid = ".$item['gid'].";";
     $result = query($pdo, $mySQLStr);
     if ($result) {
         return true;
@@ -119,7 +119,7 @@ function edit($pdo, $item){
 }
 
 function delete($pdo, $item){
-    $mySQLStr = "DELETE FROM pointfl WHERE id = ".$item['id'].";";
+    $mySQLStr = "DELETE FROM pointfl WHERE gid = ".$item['gid'].";";
     $result = query($pdo, $mySQLStr);
     if ($result) {
         return true;
@@ -127,7 +127,7 @@ function delete($pdo, $item){
     return false;
 }
 function getByID($pdo, $item){
-    $mySQLStr = "SELECT * FROM pointfl WHERE id = ".$item['id'].";";
+    $mySQLStr = "SELECT * FROM pointfl WHERE gid = ".$item['gid'].";";
     $result = query($pdo, $mySQLStr);
     if ($result) {
         return json_encode($result);;

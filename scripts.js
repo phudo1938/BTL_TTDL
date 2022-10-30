@@ -237,7 +237,7 @@ $(function () {
   
     function getItem() {
       item.name = $("#name").val();
-      item.addr = $("#addr").val();
+      item.addr_stree = $("#addr").val();
     //   item.opening_hour = $("#opening-hour").val();
     //   item.url = $("#url").val();
     //   item.phone_num = $("#phone-num").val();
