@@ -25,12 +25,11 @@
 }
 
 .left_top{
-    display: flex;
     height: 48px;
+    width: 15vw;
     align-items: center;
     box-shadow: 0 2px 4px rgb(0 0 0 / 20%), 0 -1px 0px rgb(0 0 0 / 2%);
     border-radius: 8px;
-    margin: 8px 0px 8px 8px;
     justify-content: space-around;
     background-color: #fff;
 }
@@ -41,10 +40,9 @@
 }
 
 .left_top input{
-    border: #fff;
+    border: none;
     font-size: 15px;
     margin-left: 10px;
-    height: 35px;
 }
 
 .left_top button{
@@ -100,15 +98,16 @@
     width: 24px;
 }
 
-.info_location{
-    width: 310px;
+.aside{
+    width: 15vw;
     z-index: 1;
-    /* display: none; */
+    display: none;
     /* display: table-caption; */
     box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     position: absolute;
     top: 0;
     left: 0;
+    margin-left: 6px;
     height: 100vh;
     background-color: #fff;
 }
@@ -136,7 +135,7 @@
     font-size: smaller;
 }
 
-.l_info_location{
+.l_aside{
     content: '';
     width: 307px;
     height: 2px;
@@ -146,10 +145,8 @@
     width: auto;
 }
 .info_more i{
-    color: rgb(255, 91, 0);
+    color: deepskyblue;
     font-size: 20px;
-    width: 20px;
-    height: 20px;
 }
 .info_more input{
     margin-left: 20px;
@@ -157,6 +154,7 @@
 }
 .info_more{
     padding: 16px 24px;
+    width: 307px;
 }
 .info_pd{
     padding-top: 8px;
@@ -165,7 +163,7 @@
     display: flex;
 }
 .price input{
-    width: 22%;
+    width: 25%;
 }
 .info_pd:hover{
     cursor: pointer;
@@ -182,12 +180,35 @@
 .login img:hover{
     cursor: pointer;
 }
+#name{
+    border: none;
+}
 #map{
     width: 100vw;
     height: 100vh;
 }
+/*Remove arrow on input type = number*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input:focus{
+    outline: none;
+}
+.selected {
+    background-color: rgb(200 200 200) !important;
+}
 
 .btn-s-d{
+    
 	display: flex;
     position: absolute;
     bottom: 0;
@@ -198,9 +219,7 @@
 .btn-s-d button{
     font-size: 19px;
     padding: 7px 15px;
-    background-color: rgb(241, 178, 149);
     border: none;
-    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -208,13 +227,44 @@
     margin-left: 20px;
     box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
+
 .btn-s-d span{
     padding: 5px;
     font-size: medium;
 }
 .btn-s-d button:hover{
     cursor: pointer;
-    background-color: rgb(255, 91, 0);
+}
+/*BTN ADDNEW*/
+.btn-addnew {
+    border: 1px #0077df solid;
+    background: linear-gradient(to right, #0077df, #0077df);
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    transition: background-size 0.5s 0s;
+    border-radius: 0 !important;
+    color: #0077df;
+}
+
+.btn-addnew:hover {
+    background-size: 100% 100%;
+    color: white;
+}
+
+/*BTN CANCEL*/
+.btn-cancel {
+    border: 1px red solid;
+    background: linear-gradient(to right, red, red);
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    transition: background-size 0.5s 0s;
+    border-radius: 0 !important;
+    color: red;
+}
+
+.btn-cancel:hover {
+    background-size: 100% 100%;
+    color: white;
 }
 
 /* pop up */
