@@ -96,7 +96,7 @@ $(function () {
         var coord = ol.proj.transform(evt.coordinate, "EPSG:3857", "EPSG:4326");
         var point = "POINT(" + coord[0] + " " + coord[1] + ")";
         if (api == "getSingle") {
-          callAPI(api, point, "", zoom, item).then((res) => {
+          callAPI(api, point, zoom, item).then((res) => {
             if(res){
               setItem(res);
               openAside();
@@ -105,9 +105,9 @@ $(function () {
             closeAside();
           });
         } else {
-          callAPI('isInHN', point, "", zoom, item).then(res => {
+          callAPI('isInHN', point, zoom, item).then(res => {
             if(res){
-              return callAPI('getSingle', point, "", zoom, item);
+              return callAPI('getSingle', point, zoom, item);
             }
             closeAside();
           }).then(res => {
@@ -125,7 +125,7 @@ $(function () {
               openAside();
             }
             else if(api == 'delete' && res)
-              callAPI(api, point, "", zoom, res).then(res => {
+              callAPI(api, point, zoom, res).then(res => {
                 if(res){
                 toastSuccess.show()
                 layer_ic.getSource().changed();
@@ -141,13 +141,13 @@ $(function () {
   
       $('#save').click(function () { 
           item = getItem();
-          callAPI(api, null, "", 0, item).then((res) => {
+          callAPI(api, null, 0, item).then((res) => {
             res ? toastSuccess.show() : toastError.show();
             layer_ic.getSource().changed();
           });
       });
       $(".show").on("click", function () {
-        callAPI("listAll",null,"",0,null).then(function(res) {
+        callAPI("listAll",null,0,null).then(function(res) {
             let htmlStr = "";
             res.forEach(row => {
                 htmlStr += `<tr class="tb-item">
@@ -200,7 +200,7 @@ $(function () {
         closeAside();
       })
   
-      function callAPI(api, point, keyword, distance, item) {
+      function callAPI(api, point, distance, item) {
         return new Promise((resolve, reject) => {
           $.ajax({
             type: "POST",
@@ -208,7 +208,6 @@ $(function () {
             data: {
               function: api,
               point: point,
-              keyword: keyword,
               distance: distance,
               item: item,
             },
@@ -276,40 +275,3 @@ $(function () {
     }
   });
   
-  function createJsonObj(result) {
-    return {
-      type: "FeatureCollection",
-      crs: {
-        type: "name",
-        properties: {
-          name: "EPSG:4326",
-        },
-      },
-      features: [
-        {
-          type: "Feature",
-          geometry: result,
-        },
-      ],
-    };
-  }
-  
-  function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-      txtValue = a[i].textContent || a[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        a[i].style.display = "";
-      } else {
-        a[i].style.display = "none";
-      }
-    }
-  }
-  
-  function toggleDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }

@@ -144,9 +144,7 @@ input[type=number] {
 input:focus{
     outline: none;
 }
-.selected {
-    /* background-color: rgb(200 200 200) !important; */
-}
+
 
 .btn-s-d{
     
@@ -179,7 +177,7 @@ input:focus{
 
 /*BTN ADDNEW*/
 .btn-addnew {
-    background: rgb(196, 195, 195);
+    background: rgb(255, 91, 0);
     background-repeat: no-repeat;
     background-size: 0 100%;
     border-radius: 0;
@@ -194,7 +192,7 @@ input:focus{
 
 /*BTN CANCEL*/
 .btn-cancel {
-    background: rgb(196, 195, 195);
+    background: rgb(255, 91, 0);
     background-repeat: no-repeat;
     background-size: 0 100%;
     border-radius: 0;
@@ -203,7 +201,7 @@ input:focus{
 
 .btn-cancel:hover {
     cursor: pointer;
-    background: rgb(255, 91, 0);
+    background: rgb(224, 80, 0);
     color: #fff;
 }
 
@@ -250,11 +248,7 @@ input:focus{
     border: 1px solid black;
     cursor: pointer;
 }
-/* .form_pop_up table tbody tr:first-child td{
-    font-size: 24px;
-    background: rgb(255, 91, 0);
-    color: #fff;
-} */
+
 
 .form_pop_up table tbody tr:first-child:hover{
     background-color: unset;
@@ -336,4 +330,13 @@ input:focus{
 }
 .dropdown-menu {
     left: -14px !important;
+}
+.toast-header{
+    background-color: rgb(255, 91, 0);
+    color: #fff;
+    border-radius: 6px;
+}
+.btn-secondary{
+    background-color: rgb(255, 91, 0);
+    color: #fff;
 }

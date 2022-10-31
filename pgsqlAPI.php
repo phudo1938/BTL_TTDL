@@ -9,8 +9,6 @@ if (isset($_POST['function'])) {
         $paPoint = $_POST['point'];
     if(isset($_POST['distance']))
         $distance = $_POST['distance']*= 0.0005;
-    if(isset($_POST['keyword']))
-        $keyword = strtolower($_POST['keyword']);
     if(isset($_POST['gid']))
         $gid = strtolower($_POST['gid']);
     $function = $_POST['function'];
@@ -19,7 +17,7 @@ if (isset($_POST['function'])) {
     if ($function == 'getSingle')
         $aResult = getSingle($paPDO, $paPoint, $distance);
     else if($function == 'listAll')
-        $aResult = listAll($paPDO, $paPoint, $keyword);
+        $aResult = listAll($paPDO);
     else if($function == 'add')
         $aResult = add($paPDO, $_POST['item']);
     else if($function == 'edit')
@@ -91,7 +89,7 @@ function getSingle($pdo,$point, $distance)
     return 'null';
 }
 
-function listAll($pdo,$point,$keyword){
+function listAll($pdo){
     global $SRID;
     $mySQLStr = "select * from pointfl ";
     $result = query($pdo, $mySQLStr);
