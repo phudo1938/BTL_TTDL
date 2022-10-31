@@ -150,12 +150,40 @@ $(function () {
         callAPI("listAll",null,"",0,null).then(function(res) {
             let htmlStr = "";
             res.forEach(row => {
-                htmlStr += `<tr>
-                <td><strong>`+row.name+`</strong></td>
-                <td>`+row.addr_stree+`</td>
+                htmlStr += `<tr class="tb-item">
+                <td data-gid="`+row.gid+`"><strong>`+row.name+`</strong></td>
+                <td  data-gid="`+row.gid+`">`+row.addr_stree+`</td>
             </tr>`
             });
             $('#infAll').html(htmlStr);
+
+            $('.tb-item').on('click', 'td',(e) =>{
+              let gid = $(e.target).data('gid');
+              $.ajax({
+                type: "POST",
+                url: "pgsqlAPI.php",
+                data: {
+                  function: "getByID",
+                  gid: gid,
+                },
+                success: function (result) {
+                  item = JSON.parse(result);
+                  setItem(item);
+                  let lng = parseFloat(item.lng),
+                  lat = parseFloat(item.lat);
+                  map.getView()
+                    .fit(new ol.geom.Point(
+                        ol.proj.transform([lng, lat],"EPSG:4326","EPSG:3857"
+                      )),
+                      {
+                        maxZoom : 16
+                      }
+                    );
+                  $(".md_overlay, .pop_up").removeClass( "active" );
+                  openAside();
+                },
+              });
+            })
         })
         $(".md_overlay, .pop_up").addClass( "active" );
     });
@@ -227,34 +255,16 @@ $(function () {
     function setItem(item) {
       $("#name").val(item.name);
       $("#addr").val(item.addr_stree);
-    //   $("#opening-hour").val(item.opening_hour);
-    //   $("#url").val(item.url);
-    //   $("#phone-num").val(item.phone_num);
-    //   $("#min-price").val(item.min_price);
-    //   $("#max-price").val(item.max_price);
-    //   $("#device-num").val(item.device_num);
     }
   
     function getItem() {
       item.name = $("#name").val();
       item.addr_stree = $("#addr").val();
-    //   item.opening_hour = $("#opening-hour").val();
-    //   item.url = $("#url").val();
-    //   item.phone_num = $("#phone-num").val();
-    //   item.min_price = $("#min-price").val();
-    //   item.max_price = $("#max-price").val();
-    //   item.device_num = $("#device-num").val();
       return item;
     }
     function toggleReadonly(isReadonly) {
       $("#name").prop("readonly", isReadonly);
       $("#addr").prop("readonly", isReadonly);
-      $("#opening-hour").prop("readonly", isReadonly);
-      $("#url").prop("readonly", isReadonly);
-      $("#phone-num").prop("readonly", isReadonly);
-      $("#min-price").prop("readonly", isReadonly);
-      $("#max-price").prop("readonly", isReadonly);
-      $("#device-num").prop("readonly", isReadonly);
       if(!isReadonly){
         $('#save').show();
         $('#cancel').show();

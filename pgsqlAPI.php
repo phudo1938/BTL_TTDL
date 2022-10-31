@@ -11,6 +11,8 @@ if (isset($_POST['function'])) {
         $distance = $_POST['distance']*= 0.0005;
     if(isset($_POST['keyword']))
         $keyword = strtolower($_POST['keyword']);
+    if(isset($_POST['gid']))
+        $gid = strtolower($_POST['gid']);
     $function = $_POST['function'];
 
     $aResult = "null";
@@ -27,7 +29,7 @@ if (isset($_POST['function'])) {
     else if($function == 'isInHN')
         $aResult = isInHN($paPDO, $paPoint);
     else if($function == 'getByID')
-        $aResult = getByID($paPDO, $_POST['item']);
+        $aResult = getByID($paPDO, $gid);
     echo $aResult;
 
     closeDB($paPDO);
@@ -126,11 +128,11 @@ function delete($pdo, $item){
     }
     return false;
 }
-function getByID($pdo, $item){
-    $mySQLStr = "SELECT * FROM pointfl WHERE gid = ".$item['gid'].";";
+function getByID($pdo, $gid){
+    $mySQLStr = "SELECT *,ST_X(ST_Transform (geom, 4326)) AS lng, ST_Y(ST_Transform (geom, 4326)) AS lat FROM pointfl WHERE gid = ".$gid.";";
     $result = query($pdo, $mySQLStr);
     if ($result) {
-        return json_encode($result);;
+        return json_encode($result[0]);;
     }
     return false;
 }
