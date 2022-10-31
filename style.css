@@ -29,10 +29,8 @@
 .right_top .fe_rt{
     margin: 0px 8px;
     padding: 7px 0px;
-    box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     border-radius: 20px;    
-    background: rgb(255, 91, 0);
-    color: #fff;
+    color: rgb(255, 91, 0);
 }
 .right_top .pd_rt{
     margin: 0px 8px;
@@ -147,7 +145,7 @@ input:focus{
     outline: none;
 }
 .selected {
-    background-color: rgb(200 200 200) !important;
+    /* background-color: rgb(200 200 200) !important; */
 }
 
 .btn-s-d{
@@ -334,4 +332,10 @@ input:focus{
 }
 .pop_up.active {
     display: block;
+}
+.service {
+    margin-right: 36px;
+}
+.dropdown-menu {
+    left: -14px !important;
 }
