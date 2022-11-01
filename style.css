@@ -297,14 +297,15 @@ input:focus{
     background-color: rgb(224, 80, 0);
 }
 .md_close {
-    background-image: url(../maps/img/ic_close.png);
+    background-image: url(../BTL_TTDL_Nhom9/maps/img/ic_close.png);
     background-size: contain;
     position: absolute;
-    top: 11px;
-    right: -65px;
+    top: 10px;
+    right: 10px;
     width: 14px;
     height: 14px;
     cursor: pointer;
+    margin: 7px;
 }
 .md_overlay {
     opacity: 0;
