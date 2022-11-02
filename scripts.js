@@ -10,18 +10,9 @@ $(function () {
     const toastSuccess = new bootstrap.Toast(document.getElementById('success'))
     const toastError = new bootstrap.Toast(document.getElementById('error'))
     toggleReadonly(true);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          mapLat = pos.coords.latitude;
-          mapLng = pos.coords.longitude;
-          initialize_map(true);
-        }
-      );
-    }
-    else initialize_map(false);
-  
-    function initialize_map(isPos) {
+    
+    initialize_map();
+    function initialize_map() {
       layerBG = new ol.layer.Tile({
         className: "osm-layer",
         source: new ol.source.OSM({}),
@@ -61,35 +52,6 @@ $(function () {
         layers: [layerBG, layer_bg, layer_ic],
         view: viewMap,
       });
-  
-      if (isPos) {
-        const positionFeature = new ol.Feature({
-          geometry: new ol.geom.Point(
-            ol.proj.transform([mapLng, mapLat], "EPSG:4326", "EPSG:3857")
-          ),
-        });
-        positionFeature.setStyle(
-          new ol.style.Style({
-            image: new ol.style.Circle({
-              radius: 6,
-              fill: new ol.style.Fill({
-                color: "#3399CC",
-              }),
-              stroke: new ol.style.Stroke({
-                color: "#fff",
-                width: 2,
-              }),
-            }),
-          })
-        );
-  
-        new ol.layer.Vector({
-          map: map,
-          source: new ol.source.Vector({
-            features: [positionFeature],
-          }),
-        });
-      }
   
       map.on("click", function (evt) {
         var zoom = map.getView().getZoom();
